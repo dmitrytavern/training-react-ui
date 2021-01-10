@@ -1,0 +1,52 @@
+*,
+*:before,
+*:after
+  box-sizing: border-box
+  margin: 0
+  padding: 0
+
+html,
+body,
+#root,
+.app
+  height: 100%
+  min-height: 100%
+
+html, body
+  position: relative
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+
+body
+  color: #000
+  font-family: 'Nunito', sans-serif
+  font-size: 15px
+  font-weight: normal
+  line-height: normal
+  overflow-x: hidden
+  text-align: left
+
+ol, ul
+  list-style: none
+
+article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, section
+  display: block
+
+a
+  transition: color .3s
+  text-decoration: none
+
+  &:hover
+    text-decoration: none
+
+
+img
+  max-width: 100%
+  vertical-align: middle
+  border-style: none
+  user-select: none
+
+svg
+  overflow: hidden
+
+@import "fonts"

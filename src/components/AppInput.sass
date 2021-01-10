@@ -1,0 +1,60 @@
+.app-input
+  font-weight: 700
+
+  &__inner
+    transition: border .18s
+    overflow: hidden
+    position: relative
+    border: 1px solid rgba(#000, 0)
+    background: #fff
+    border-radius: 10px
+    box-shadow: 0 0 30px rgba(#000, .1)
+
+  &__input
+    display: block
+    width: 100%
+
+  &__label
+    transition: transform .3s, color .3s
+    position: absolute
+    left: 30px
+    font-size: 15px
+    line-height: 20px
+    transform: translateY(20px) scale(1)
+    transform-origin: top left
+
+  &__input
+    font-family: 'Nunito', sans-serif
+    font-weight: 700
+    font-size: 15px
+    line-height: 20px
+    outline: none
+    border: none
+    padding: 30px 30px 10px
+
+  &__error
+    display: none
+    margin-top: 5px
+    font-size: 12px
+    font-weight: 700
+    color: #C31A1A
+
+  &_error
+    .app-input
+      &__inner
+        border-color: #C31A1A
+
+      &__error
+        display: block
+
+  &_focus
+    .app-input
+      &__inner
+        border-color: #adadad
+
+  &_active
+    .app-input
+      &__label
+        transform: translateY(8px) scale(.75)
+        color: #bebebe
+
