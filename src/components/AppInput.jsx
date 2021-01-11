@@ -1,12 +1,12 @@
 import './AppInput.sass'
-import React, { useState } from 'react'
+import { useState } from 'react'
 
-const AppInput = ({ id, label, type, error, errorMessage, value, onChange, onFocus }) => {
+const AppInput = ({ id, label, type, error, errorMessage, value, onChange, onFocus, inputProps }) => {
 	const [focus, setFocus] = useState(false)
 
 	const handlerFocus = () => {
 		setFocus(true)
-		onFocus()
+		if (onFocus) onFocus()
 	}
 
 	const handlerBlur = () => {
@@ -34,11 +34,12 @@ const AppInput = ({ id, label, type, error, errorMessage, value, onChange, onFoc
 					onFocus={handlerFocus}
 					onBlur={handlerBlur}
 					onChange={onChange}
+					{...inputProps}
 				/>
 
 			</div>
 
-			<div className="app-input__error">{errorMessage}</div>
+			<span className="app-input__error">{errorMessage}</span>
 		</div>
 	);
 };

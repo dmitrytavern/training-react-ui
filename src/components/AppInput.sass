@@ -10,21 +10,20 @@
     border-radius: 10px
     box-shadow: 0 0 30px rgba(#000, .1)
 
-  &__input
-    display: block
-    width: 100%
-
   &__label
-    transition: transform .3s, color .3s
+    transition: transform .2s ease, color .2s ease
+    transform: translateY(20px) scale(1)
+    transform-origin: top left
     position: absolute
     left: 30px
     font-size: 15px
     line-height: 20px
-    transform: translateY(20px) scale(1)
-    transform-origin: top left
+    cursor: auto
 
   &__input
-    font-family: 'Nunito', sans-serif
+    display: block
+    width: 100%
+    font-family: inherit
     font-weight: 700
     font-size: 15px
     line-height: 20px
