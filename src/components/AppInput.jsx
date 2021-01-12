@@ -1,7 +1,7 @@
 import './AppInput.sass'
 import { useState } from 'react'
 
-const AppInput = ({ id, label, type, error, errorMessage, value, onChange, onFocus, inputProps }) => {
+const AppInput = ({ id, label, type, error, errorMessage, value, onChange, onFocus, inputProps, slotIconRight }) => {
 	const [focus, setFocus] = useState(false)
 
 	const handlerFocus = () => {
@@ -37,11 +37,13 @@ const AppInput = ({ id, label, type, error, errorMessage, value, onChange, onFoc
 					{...inputProps}
 				/>
 
+				{slotIconRight}
+
 			</div>
 
 			<span className="app-input__error">{errorMessage}</span>
 		</div>
-	);
-};
+	)
+}
 
-export default AppInput;
+export default AppInput

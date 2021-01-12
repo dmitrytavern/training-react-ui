@@ -1,10 +1,10 @@
-import AppAuthForm from "./components/AppAuthForm";
+import AppAuth from "./pages/AppAuth"
 
 function App() {
 	return (
 		<div className="app">
 
-			<AppAuthForm />
+			<AppAuth />
 
 		</div>
 	)
