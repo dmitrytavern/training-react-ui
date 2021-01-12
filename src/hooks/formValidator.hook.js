@@ -38,6 +38,12 @@ const useFormValidator = () => {
 		}
 	}
 
+	const checkedValidation = (key, value) => {
+		if (!value) {
+			setError(key, 'Cannot be not selected')
+		}
+	}
+
 	const clearError = (key) => {
 		setFormErrors(({...oldValue}) => {
 			delete oldValue[key]
@@ -53,7 +59,8 @@ const useFormValidator = () => {
 			validator,
 			textValidation,
 			emailValidation,
-			passwordValidation
+			passwordValidation,
+			checkedValidation
 		}
 	}
 }

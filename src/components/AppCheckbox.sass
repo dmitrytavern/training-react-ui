@@ -1,0 +1,30 @@
+.app-checkbox
+
+  &__label
+    display: flex
+    align-items: center
+    cursor: pointer
+
+  &__box
+    transition: border .3s
+    display: inline-flex
+    align-items: center
+    justify-content: center
+    width: 16px
+    height: 16px
+    min-width: 16px
+    min-height: 16px
+    border: 1px solid #000
+    border-radius: 4px
+    margin-right: 15px
+
+    &-icon
+      display: none
+
+  &_checked
+    .app-checkbox__box-icon
+      display: block
+
+  &_error
+    .app-checkbox__box
+      border-color: #C31A1A

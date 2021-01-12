@@ -4,16 +4,18 @@ import useFormValidator from "../../hooks/formValidator.hook"
 
 import AppForm from "../AppForm"
 import AppInput from "../AppInput"
-import AppInputPasswordIcon from "../AppInputPasswordIcon";
+import AppCheckbox from "../AppCheckbox"
+import AppInputPasswordIcon from "../AppInputPasswordIcon"
 
 const AppAuthFormSignUp = () => {
 	const [showPassword, setShowPassword] = useState(false);
 	const { formErrors, validators, clearError } = useFormValidator()
-	const { formValues, setFormValue } = useForm({
+	const { formValues, setTextValue, setCheckboxValue } = useForm({
 		first_name: '',
 		last_name: '',
 		email: '',
 		password: '',
+		privacy_policy: false
 	})
 
 	const validateForm = () => {
@@ -21,6 +23,7 @@ const AppAuthFormSignUp = () => {
 		validators.textValidation('last_name', formValues.last_name)
 		validators.emailValidation('email', formValues.email)
 		validators.passwordValidation('password', formValues.password)
+		validators.checkedValidation('privacy_policy', formValues.privacy_policy)
 	}
 
 	const fetchData = () => {
@@ -39,7 +42,7 @@ const AppAuthFormSignUp = () => {
 					value={formValues.first_name}
 					error={formErrors.first_name !== undefined}
 					errorMessage={formErrors.first_name}
-					onChange={setFormValue('first_name')}
+					onChange={setTextValue('first_name')}
 					onFocus={() => clearError('first_name')}
 					inputProps={{
 						autoComplete: 'given-name'
@@ -55,7 +58,7 @@ const AppAuthFormSignUp = () => {
 					value={formValues.last_name}
 					error={formErrors.last_name !== undefined}
 					errorMessage={formErrors.last_name}
-					onChange={setFormValue('last_name')}
+					onChange={setTextValue('last_name')}
 					onFocus={() => clearError('last_name')}
 					inputProps={{
 						autoComplete: 'family-name'
@@ -71,7 +74,7 @@ const AppAuthFormSignUp = () => {
 					value={formValues.email}
 					error={formErrors.email !== undefined}
 					errorMessage={formErrors.email}
-					onChange={setFormValue('email')}
+					onChange={setTextValue('email')}
 					onFocus={() => clearError('email')}
 					inputProps={{
 						autoComplete: 'email'
@@ -87,7 +90,7 @@ const AppAuthFormSignUp = () => {
 					value={formValues.password}
 					error={formErrors.password !== undefined}
 					errorMessage={formErrors.password}
-					onChange={setFormValue('password')}
+					onChange={setTextValue('password')}
 					onFocus={() => clearError('password')}
 					inputProps={{
 						autoComplete: 'new-password'
@@ -95,6 +98,19 @@ const AppAuthFormSignUp = () => {
 
 					slotIconRight={<AppInputPasswordIcon showPassword={showPassword} setShowPassword={setShowPassword}/>}
 				/>
+
+				<div style={{height: 30}} />
+
+				<AppCheckbox
+					id="privacy_policy"
+					value={formValues.privacy_policy}
+					error={formErrors.privacy_policy !== undefined}
+					onChange={setCheckboxValue('privacy_policy')}
+					onClick={() => clearError('privacy_policy')}
+				>
+					<span>I agree to the </span>
+					<a href="/"><span>Terms and Conditions</span></a>
+				</AppCheckbox>
 
 				<button type="submit">Submit</button>
 			</AppForm>
