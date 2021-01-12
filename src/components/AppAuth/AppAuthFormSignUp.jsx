@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import useForm from "../../hooks/form.hook"
 import useFormValidator from "../../hooks/formValidator.hook"
 
@@ -6,9 +6,11 @@ import AppForm from "../AppForm"
 import AppInput from "../AppInput"
 import AppCheckbox from "../AppCheckbox"
 import AppInputPasswordIcon from "../AppInputPasswordIcon"
+import AppButtonArrow from "../AppButtonArrow"
 
 const AppAuthFormSignUp = () => {
-	const [showPassword, setShowPassword] = useState(false);
+	const [submitBlock, setSubmitBlock] = useState(false)
+	const [showPassword, setShowPassword] = useState(false)
 	const { formErrors, validators, clearError } = useFormValidator()
 	const { formValues, setTextValue, setCheckboxValue } = useForm({
 		first_name: '',
@@ -30,6 +32,9 @@ const AppAuthFormSignUp = () => {
 		console.log('Send data')
 	}
 
+	useEffect(() => {
+		setSubmitBlock(!formValues.privacy_policy)
+	}, [formValues.privacy_policy])
 
 	return (
 		<div style={{ maxWidth: "440px", padding: '30px'}}>
@@ -112,7 +117,17 @@ const AppAuthFormSignUp = () => {
 					<a href="/"><span>Terms and Conditions</span></a>
 				</AppCheckbox>
 
-				<button type="submit">Submit</button>
+				<div style={{height: 15}} />
+
+				<div style={{display: 'flex', justifyContent: 'space-between'}}>
+					<AppButtonArrow position="left" type="link" href="/" theme="link">
+						Back
+					</AppButtonArrow>
+
+					<AppButtonArrow position="right" type="submit" theme="link" disabled={submitBlock}>
+						Continue
+					</AppButtonArrow>
+				</div>
 			</AppForm>
 
 		</div>

@@ -5,6 +5,7 @@ import useFormValidator from "../../hooks/formValidator.hook"
 import AppForm from "../AppForm"
 import AppInput from "../AppInput"
 import AppInputPasswordIcon from "../AppInputPasswordIcon";
+import AppButtonArrow from "../AppButtonArrow";
 
 const AppAuthFormSignUp = () => {
 	const [showPassword, setShowPassword] = useState(false);
@@ -60,7 +61,13 @@ const AppAuthFormSignUp = () => {
 					slotIconRight={<AppInputPasswordIcon showPassword={showPassword} setShowPassword={setShowPassword}/>}
 				/>
 
-				<button type="submit">Submit</button>
+				<div style={{height: 15}} />
+
+				<div style={{display: 'flex', justifyContent: 'flex-end'}}>
+					<AppButtonArrow position="right" type="submit" theme="link">
+						Continue
+					</AppButtonArrow>
+				</div>
 			</AppForm>
 
 		</div>
