@@ -37,7 +37,7 @@ const AppAuthFormSignUp = () => {
 	}, [formValues.privacy_policy])
 
 	return (
-		<div style={{ maxWidth: "440px", padding: '30px'}}>
+		<div>
 
 			<AppForm errors={formErrors} action={fetchData} validation={validateForm}>
 				<AppInput

@@ -26,7 +26,7 @@ const AppAuthFormSignUp = () => {
 
 
 	return (
-		<div style={{ maxWidth: "440px", padding: '30px'}}>
+		<div>
 
 			<AppForm errors={formErrors} action={fetchData} validation={validateForm}>
 				<AppInput

@@ -1,0 +1,34 @@
+.app-tab-panel-enter
+  opacity: 1
+
+// Next
+
+.app-tab-panel-next-enter-active
+  opacity: 0
+  transform: translateX(-10px)
+  transition: opacity 300ms ease, transform 300ms ease
+
+.app-tab-panel-next-exit
+  opacity: 0
+  transform: translateX(-10px)
+
+// Next END
+
+
+// Prev
+
+.app-tab-panel-prev-enter-active
+  opacity: 0
+  transform: translateX(10px)
+  transition: opacity 300ms ease, transform 300ms ease
+
+.app-tab-panel-prev-exit
+  opacity: 0
+  transform: translateX(10px)
+
+// Prev END
+
+.app-tab-panel-exit-active
+  opacity: 1
+  transform: translateX(0)
+  transition: opacity 300ms ease, transform 300ms ease
