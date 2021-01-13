@@ -26,7 +26,6 @@ const AppAuthForm = () => {
 				<AppTabsBar>
 					<AppTabControl index={0}>Sign Up</AppTabControl>
 					<AppTabControl index={1}>Sign In</AppTabControl>
-					<AppTabControl index={2}>Login</AppTabControl>
 				</AppTabsBar>
 
 				<div style={{height: '30px'}}/>
@@ -36,10 +35,6 @@ const AppAuthForm = () => {
 				</AppTabPanel>
 
 				<AppTabPanel index={1}>
-					<AppAuthFormSignIn />
-				</AppTabPanel>
-
-				<AppTabPanel index={2}>
 					<AppAuthFormSignIn />
 				</AppTabPanel>
 			</AppTabs>

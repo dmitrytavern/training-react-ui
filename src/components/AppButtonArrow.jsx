@@ -5,7 +5,9 @@ import { ReactComponent as AppIconArrowLeft } from '../assets/img/icons/arrow-le
 
 import AppButton, { propTypes } from "./AppButton"
 
-const AppButtonArrow = ({ position, disabled, className, children, ...props}) => {
+const AppButtonArrow = (props) => {
+	// Split or modify props from AppButtonArrow and AppButton components
+	const { position, disabled, className, children, ...buttonProps} = props
 	let iconPosition = position || 'left'
 
 	let buttonClassName = 'app-button-arrow app-button-arrow_' + iconPosition
@@ -13,7 +15,12 @@ const AppButtonArrow = ({ position, disabled, className, children, ...props}) =>
 	if (className) buttonClassName += ' ' + className
 
 	return (
-		<AppButton className={buttonClassName} disabled={disabled} {...props}>
+		<AppButton
+			className={buttonClassName}
+			disabled={disabled}
+
+			{...buttonProps}
+		>
 			{iconPosition === 'left' && (
 				<span className="app-button-arrow__arrow app-button-arrow__arrow_left">
 				<AppIconArrowLeft />

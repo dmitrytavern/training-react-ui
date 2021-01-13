@@ -58,7 +58,9 @@ const AppAuthFormSignUp = () => {
 						autoComplete: 'current-password'
 					}}
 
-					slotIconRight={<AppInputPasswordIcon showPassword={showPassword} setShowPassword={setShowPassword}/>}
+					endAdornment={
+						<AppInputPasswordIcon showPassword={showPassword} setShowPassword={setShowPassword}/>
+					}
 				/>
 
 				<div style={{height: 15}} />

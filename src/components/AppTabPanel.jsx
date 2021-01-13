@@ -8,7 +8,7 @@ import { useTabsContext } from "./AppTabs"
 const AppTabPanel = (props) => {
 	const nodeRef = useRef(null)
 	const { index } = props
-	const { changing, current, currentNext, currentPrev, transition, transitionName } = useTabsContext()
+	const { changing, currentActive, currentNext, currentPrev, transition, transitionName } = useTabsContext()
 	const [prefix, setPrefix] = useState('');
 
 	useEffect(() => {
@@ -25,7 +25,7 @@ const AppTabPanel = (props) => {
 	if (transition === 0 && transitionName === '') {
 		return (
 			<div className="app-tab">
-				{ current === index && props.children}
+				{ currentActive === index && props.children}
 			</div>
 		)
 	}
@@ -48,7 +48,7 @@ const AppTabPanel = (props) => {
 			timeout={transition}
 		>
 			<div className="app-tab-panel" ref={nodeRef}>
-				{ current === index && props.children}
+				{ currentActive === index && props.children}
 			</div>
 		</CSSTransition>
 	)

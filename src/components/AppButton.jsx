@@ -2,25 +2,18 @@ import './AppButton.sass'
 import React from 'react'
 import PropTypes from "prop-types"
 
-const AppButton = ({ className, theme, type, href, disabled, buttonProps, children }) => {
-	let props = buttonProps || {}
-	let buttonClassName = 'app-button'
-	switch (theme) {
-		case 'link': buttonClassName += ' app-button_link'; break
-		case 'filled': buttonClassName += ' app-button_filled'; break
-		case 'outline': buttonClassName += ' app-button_outline'; break
-		default: {
-			if (theme.length !== 0) {
-				buttonClassName += ' app-button_' + theme
-			} else {
-				buttonClassName += ' app-button_filled'
-			}
-		}
-	}
+const AppButton = (props) => {
+	const { className, type, href, disabled } = props
+	const theme = props.theme || 'filled'
+	const buttonProps = props.buttonProps || {}
+
+	let buttonClassName = `app-button app-button_${theme}`
+
 	if (disabled) {
 		buttonClassName += ' app-button_disabled'
-		props['disabled'] = 'disabled'
+		buttonProps['disabled'] = 'disabled'
 	}
+
 	if (className) buttonClassName += ' ' + className
 
 	if (type === 'link') {
@@ -29,10 +22,10 @@ const AppButton = ({ className, theme, type, href, disabled, buttonProps, childr
 				href={href}
 				className={buttonClassName}
 
-				{...props}
+				{...buttonProps}
 			>
 
-				{children}
+				{props.children}
 			</a>
 		)
 	}
@@ -42,10 +35,10 @@ const AppButton = ({ className, theme, type, href, disabled, buttonProps, childr
 			type={type}
 			className={buttonClassName}
 
-			{...props}
+			{...buttonProps}
 		>
 
-			{children}
+			{props.children}
 		</button>
 	)
 }

@@ -1,7 +1,9 @@
+import PropTypes from 'prop-types'
 import { useEffect, useState } from "react"
 
 
-const AppForm = ({ children, errors, validation, action, onSubmit }) => {
+const AppForm = (props) => {
+	const { errors, validation, action, onSubmit } = props
 	const [isSubmitting, setIsSubmitting] = useState(false)
 
 	const handlerSubmit = (event) => {
@@ -22,9 +24,20 @@ const AppForm = ({ children, errors, validation, action, onSubmit }) => {
 
 	return (
 		<form onSubmit={handlerSubmit}>
-			{ children }
+			{ props.children }
 		</form>
-	);
-};
+	)
+}
+
+AppForm.defaultProps = {
+	errors: {}
+}
+
+AppForm.propTypes = {
+	errors: PropTypes.object,
+	validation: PropTypes.func,
+	action: PropTypes.func.isRequired,
+	onSubmit: PropTypes.func
+}
 
 export default AppForm

@@ -17,27 +17,32 @@ export function useTabsContext() {
 }
 
 const AppTabs = (props) => {
+	const { value } = props
 	const [changing, setChanging] = useState(false)
-	const [currentPrev, setCurrentPrev] = useState(props.value)
-	const [currentNext, setCurrentNext] = useState(props.value)
+	const [currentPrev, setCurrentPrev] = useState(value)
+	const [currentNext, setCurrentNext] = useState(value)
 
-	const current = props.value
+	const currentActive = value
 	const transition = props.transition || 0
 	const transitionName = props.transitionName || ''
 
+
+	const changeState = (event, newVal, oldVal) => {
+		props.onChange(event, newVal, oldVal)
+		setChanging(false)
+	}
+
 	const handlerChange = (event, newVal, oldVal) => {
-		if (current === newVal) return
+		if (currentActive === newVal) return
 		setChanging(true)
 		setCurrentNext(newVal)
 		setCurrentPrev(oldVal)
 
 		if (transition === 0) {
-			props.onChange(event, newVal)
-			setChanging(false)
+			changeState(event, newVal, oldVal)
 		} else {
 			setTimeout(() => {
-				props.onChange(event, newVal)
-				setChanging(false)
+				changeState(event, newVal, oldVal)
 			}, transition)
 		}
 	}
@@ -46,7 +51,7 @@ const AppTabs = (props) => {
 	const providerValue = {
 		transition,
 		transitionName,
-		current,
+		currentActive,
 		currentNext,
 		currentPrev,
 		changing,

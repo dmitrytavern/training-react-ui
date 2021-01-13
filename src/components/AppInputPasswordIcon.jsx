@@ -1,4 +1,5 @@
 import './AppInputPasswordIcon.sass'
+import PropTypes from 'prop-types'
 import { ReactComponent as AppIconEyeOn } from "../assets/img/icons/eye-on.svg"
 import { ReactComponent as AppIconEyeOff } from "../assets/img/icons/eye-off.svg"
 
@@ -8,6 +9,11 @@ const AppInputPasswordIcon = ({ showPassword, setShowPassword }) => {
 			{ showPassword ? <AppIconEyeOn /> : <AppIconEyeOff /> }
 		</button>
 	)
+}
+
+AppInputPasswordIcon.propTypes = {
+	showPassword: PropTypes.bool.isRequired,
+	setShowPassword: PropTypes.func.isRequired
 }
 
 export default AppInputPasswordIcon

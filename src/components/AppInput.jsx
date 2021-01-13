@@ -1,20 +1,24 @@
 import './AppInput.sass'
+import PropTypes from 'prop-types'
 import { useState } from 'react'
 
-const AppInput = ({ id, label, type, error, errorMessage, value, onChange, onFocus, inputProps, slotIconRight }) => {
+const AppInput = (props) => {
+	const { id, label, type, error, errorMessage, value, onChange, onFocus, onBlur, inputProps } = props
 	const [focus, setFocus] = useState(false)
 
-	const handlerFocus = () => {
+	const handlerFocus = (event) => {
 		setFocus(true)
-		if (onFocus) onFocus()
+		onFocus(event)
 	}
 
-	const handlerBlur = () => {
+	const handlerBlur = (event) => {
 		setFocus(false)
+		onBlur(event)
 	}
 
 
 	let inputClassName = 'app-input'
+	if (label) inputClassName += ' app-input_shift'
 	if (error) inputClassName += ' app-input_error'
 	if (focus) inputClassName += ' app-input_focus'
 	if (focus || value.length !== 0) inputClassName += ' app-input_active'
@@ -23,27 +27,58 @@ const AppInput = ({ id, label, type, error, errorMessage, value, onChange, onFoc
 		<div className={inputClassName}>
 			<div className="app-input__inner">
 
-				<label htmlFor={id} className="app-input__label">{label}</label>
+				{props.startAdornment}
 
-				<input
-					id={id}
-					className="app-input__input"
-					type={type}
+				<div className="app-input__input-wrapper">
+					{label && (
+						<label htmlFor={id} className="app-input__label">{label}</label>
+					)}
 
-					value={value}
-					onFocus={handlerFocus}
-					onBlur={handlerBlur}
-					onChange={onChange}
-					{...inputProps}
-				/>
+					<input
+						id={id}
+						className="app-input__input"
+						type={type}
 
-				{slotIconRight}
+						value={value}
+						onFocus={handlerFocus}
+						onBlur={handlerBlur}
+						onChange={onChange}
+						{...inputProps}
+					/>
 
+				</div>
+
+				{props.endAdornment}
 			</div>
 
-			<span className="app-input__error">{errorMessage}</span>
+			{errorMessage && (
+				<span className="app-input__error">{errorMessage}</span>
+			)}
+
 		</div>
 	)
+}
+
+AppInput.defaultProps = {
+	type: 'text',
+	onFocus: () => {},
+	onBlur: () => {}
+}
+
+AppInput.propTypes = {
+	id: PropTypes.string.isRequired,
+	value: PropTypes.any.isRequired,
+	onChange: PropTypes.func.isRequired,
+	onFocus: PropTypes.func,
+	onBlur: PropTypes.func,
+	label: PropTypes.string,
+	type: PropTypes.string,
+	error: PropTypes.bool,
+	errorMessage: PropTypes.string,
+	inputProps: PropTypes.object,
+
+	startAdornment: PropTypes.element,
+	endAdornment: PropTypes.element
 }
 
 export default AppInput

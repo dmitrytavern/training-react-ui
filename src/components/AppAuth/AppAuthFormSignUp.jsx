@@ -43,7 +43,6 @@ const AppAuthFormSignUp = () => {
 				<AppInput
 					id="sign-up-first_name"
 					label="First name"
-					type="text"
 					value={formValues.first_name}
 					error={formErrors.first_name !== undefined}
 					errorMessage={formErrors.first_name}
@@ -59,7 +58,6 @@ const AppAuthFormSignUp = () => {
 				<AppInput
 					id="sign-up-last_name"
 					label="Last name"
-					type="text"
 					value={formValues.last_name}
 					error={formErrors.last_name !== undefined}
 					errorMessage={formErrors.last_name}
@@ -100,8 +98,9 @@ const AppAuthFormSignUp = () => {
 					inputProps={{
 						autoComplete: 'new-password'
 					}}
-
-					slotIconRight={<AppInputPasswordIcon showPassword={showPassword} setShowPassword={setShowPassword}/>}
+					endAdornment={
+						<AppInputPasswordIcon showPassword={showPassword} setShowPassword={setShowPassword}/>
+					}
 				/>
 
 				<div style={{height: 30}} />

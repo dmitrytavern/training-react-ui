@@ -1,10 +1,9 @@
 import './AppCheckbox.sass'
+import PropTypes from 'prop-types'
 import { ReactComponent as AppIconCheck } from '../assets/img/icons/check.svg'
 
-const AppCheckbox = ({ id, value, error, onChange, onClick, inputProps, children }) => {
-	const handlerChange = (event) => {
-		onChange(event)
-	}
+const AppCheckbox = (props) => {
+	const { id, value, error, onChange, onClick } = props
 
 	let checkboxClassName = 'app-checkbox'
 	if (error) checkboxClassName += ' app-checkbox_error'
@@ -17,10 +16,10 @@ const AppCheckbox = ({ id, value, error, onChange, onClick, inputProps, children
 				type="checkbox"
 				value={value}
 				hidden="hidden"
-				onChange={handlerChange}
+				onChange={onChange}
 				onClick={onClick}
 
-				{...inputProps}
+				{...props.inputProps}
 			/>
 
 			<label htmlFor={id} className="app-checkbox__label">
@@ -31,11 +30,20 @@ const AppCheckbox = ({ id, value, error, onChange, onClick, inputProps, children
 				</span>
 
 				<span>
-					{children}
+					{props.children}
 				</span>
 			</label>
 		</div>
 	)
+}
+
+AppCheckbox.propTypes = {
+	id: PropTypes.string.isRequired,
+	value: PropTypes.bool.isRequired,
+	onChange: PropTypes.func.isRequired,
+	onClick: PropTypes.func,
+	error: PropTypes.bool,
+	inputProps: PropTypes.object
 }
 
 export default AppCheckbox
