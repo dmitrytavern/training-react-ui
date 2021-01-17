@@ -15,7 +15,7 @@ const AppAuthForm = () => {
 	}
 
 	return (
-		<div style={{ maxWidth: "440px", padding: '30px'}}>
+		<div>
 
 			<AppTabs
 				value={currentTab}

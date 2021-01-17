@@ -1,6 +1,7 @@
 import { useState } from "react"
 import useForm from "../../hooks/form.hook"
 import useFormValidator from "../../hooks/formValidator.hook"
+import useAuthContext from "./auth.context"
 
 import AppForm from "../AppForm"
 import AppInput from "../AppInput"
@@ -8,7 +9,8 @@ import AppInputPasswordIcon from "../AppInputPasswordIcon";
 import AppButtonArrow from "../AppButtonArrow";
 
 const AppAuthFormSignUp = () => {
-	const [showPassword, setShowPassword] = useState(false);
+	const [showPassword, setShowPassword] = useState(false)
+	const { onLogin } = useAuthContext()
 	const { formErrors, validators, clearError } = useFormValidator()
 	const { formValues, setFormValue } = useForm({
 		email: '',
@@ -22,6 +24,7 @@ const AppAuthFormSignUp = () => {
 
 	const fetchData = () => {
 		console.log('Send data')
+		onLogin({...formValues})
 	}
 
 
