@@ -2,6 +2,7 @@
   font-family: inherit
   font-weight: 700
   font-size: 16px
+  padding: 12px 33px
   outline: none
   cursor: pointer
   color: #000
@@ -10,16 +11,31 @@
     color: #000
 
   &_link
+    padding: 0
     background: transparent
     border: none
 
   &_filled
-    background: #000
+    transition: background-color .3s
+    background: #F8762A
+    color: #ffffff
     border: none
+    border-radius: 10px
+
+    &:hover:not(&_disabled)
+      background: #dc5708
+      color: #fff
 
   &_outline
+    transition: background-color .3s, color .3s
     background: transparent
-    border: 1px solid
+    border: 1px solid #F8762A
+    color: #F8762A
+    border-radius: 10px
+
+    &:hover:not(&_disabled)
+      background: #F8762A
+      color: #ffffff
 
   &_disabled
     color: #969696

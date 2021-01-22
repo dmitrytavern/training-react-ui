@@ -12,14 +12,14 @@ import AppButtonArrow from "../AppButtonArrow"
 const AppAuthFormSignUp = () => {
 	const [submitBlock, setSubmitBlock] = useState(false)
 	const [showPassword, setShowPassword] = useState(false)
-	const { onRegister } = useAuthContext()
+	const { onRegister, data } = useAuthContext()
 	const { formErrors, validators, clearError } = useFormValidator()
 	const { formValues, setTextValue, setCheckboxValue } = useForm({
-		first_name: '',
-		last_name: '',
-		email: '',
-		password: '',
-		privacy_policy: false
+		first_name: data.first_name || '',
+		last_name: data.last_name || '',
+		email: data.email || '',
+		password: data.password || '',
+		privacy_policy: data.privacy_policy || false
 	})
 
 	const validateForm = () => {
