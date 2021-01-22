@@ -1,0 +1,65 @@
+.app-alert-enter
+  opacity: 0
+  transform: translateY(-100%)
+
+.app-alert-enter-active
+  opacity: 1
+  transform: translateY(0)
+  transition: opacity .3s ease, transform .3s ease
+
+.app-alert-exit
+  opacity: 1
+  transform: translateY(0)
+
+.app-alert-exit-active
+  transform: translateY(-100%)
+  transition: transform .3s ease
+
+
+.app-alert
+  position: fixed
+  top: 0
+  left: 0
+  width: 100%
+  z-index: 15
+
+  &__inner
+    padding: 12px 26px
+    display: flex
+    align-items: center
+
+  &__icon
+    margin-right: 30px
+
+    svg
+      width: 24px
+      height: 24px
+
+  &__content
+    flex: 1
+
+  &__close
+    padding: 4px
+    background: none
+    border: none
+    outline: none
+    cursor: pointer
+
+    svg
+      width: 18px
+      height: 18px
+
+
+  &_default
+    background: #f0f0f0
+    color: #000000
+
+    svg
+      fill: #000000
+
+  &_danger
+    background: #d42525
+    color: #ffffff
+
+    svg
+      fill: #ffffff
