@@ -2,30 +2,65 @@ import './AppTabPanel.sass'
 import PropTypes from 'prop-types'
 import { useRef, useEffect, useState } from 'react'
 import { CSSTransition } from "react-transition-group"
-import { useTabsContext } from "./AppTabs"
 
 
 const AppTabPanel = (props) => {
+	const {
+		index,
+		value,
+		transition,
+		transitionName,
+		transitionDirection
+	} = props
+
 	const nodeRef = useRef(null)
-	const { index } = props
-	const { changing, currentActive, currentNext, currentPrev, transition, transitionName } = useTabsContext()
-	const [prefix, setPrefix] = useState('');
+	const [prefix, setPrefix] = useState('')
 
+	const [changing, setChanging] = useState(false)
+	const [activeTab, setActiveTab] = useState(value)
+	const prevTab = useRef(value)
+
+	const updateActiveTab = (_val) => {
+		setActiveTab(_val)
+		prevTab.current = _val
+		setChanging(false)
+	}
+
+
+	/* Base logic for setting tabs */
 	useEffect(() => {
-		if (index === currentPrev) {
-			return currentPrev < currentNext ? setPrefix('-next') : setPrefix('-prev')
+		if (value === prevTab.current && value === activeTab) return
+
+		if (transition === 0) {
+			updateActiveTab(value)
+		} else {
+			setChanging(true)
+			setTimeout(() => updateActiveTab(value), transition)
+		}
+	}, [value, activeTab, index, transition])
+
+
+	/* Base logic for transition effect */
+	useEffect(() => {
+		if (!transitionDirection) return
+		let prevVal = prevTab.current
+		let nextVal = value
+
+		if (index === prevVal) {
+			return prevVal < nextVal ? setPrefix('-next') : setPrefix('-prev')
 		}
 
-		if (index === currentNext) {
-			return currentPrev > currentNext ? setPrefix('-next') : setPrefix('-prev')
+		if (index === nextVal) {
+			return prevVal > nextVal ? setPrefix('-next') : setPrefix('-prev')
 		}
-	}, [currentPrev, currentNext, index])
+	}, [value, prevTab, index, transitionDirection])
 
 
+	/* If transition is none, we return component without transition component */
 	if (transition === 0 && transitionName === '') {
 		return (
 			<div className="app-tab">
-				{ currentActive === index && props.children}
+				{ activeTab === index && props.children}
 			</div>
 		)
 	}
@@ -48,14 +83,25 @@ const AppTabPanel = (props) => {
 			timeout={transition}
 		>
 			<div className="app-tab-panel" ref={nodeRef}>
-				{ currentActive === index && props.children}
+				{ activeTab === index && props.children}
 			</div>
 		</CSSTransition>
 	)
 }
 
 AppTabPanel.propTypes = {
-	index: PropTypes.number.isRequired
+	index: PropTypes.number.isRequired,
+	value: PropTypes.any.isRequired,
+
+	transition: PropTypes.number,
+	transitionName: PropTypes.string,
+	transitionDirection: PropTypes.bool
+}
+
+AppTabPanel.propsDefault = {
+	transition: 0,
+	transitionName: '',
+	transitionDirection: false
 }
 
 export default AppTabPanel
