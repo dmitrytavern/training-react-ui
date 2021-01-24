@@ -6,7 +6,7 @@ import useAuthContext from "./auth.context"
 import AppForm from "../AppForm"
 import AppInput from "../AppInput"
 import AppInputPasswordIcon from "../AppInputPasswordIcon";
-import AppButtonArrow from "../AppButtonArrow";
+import AppButtonArrow from "../AppButton/AppButtonArrow";
 
 const AppAuthFormSignUp = () => {
 	const [showPassword, setShowPassword] = useState(false)
@@ -69,7 +69,7 @@ const AppAuthFormSignUp = () => {
 				<div style={{height: 15}} />
 
 				<div style={{display: 'flex', justifyContent: 'flex-end'}}>
-					<AppButtonArrow position="right" type="submit" theme="link">
+					<AppButtonArrow position="right" type="submit">
 						Continue
 					</AppButtonArrow>
 				</div>

@@ -7,35 +7,39 @@
   cursor: pointer
   color: #000
 
-  &:hover:not(&_disabled)
+  // State
+  &.is-hovered
     color: #000
 
-  &_link
+  &.is-disabled
+    color: #969696
+
+
+  // Variants
+
+  &_variant_link
     padding: 0
     background: transparent
     border: none
 
-  &_filled
+  &_variant_filled
     transition: background-color .3s
     background: #F8762A
     color: #ffffff
     border: none
     border-radius: 10px
 
-    &:hover:not(&_disabled)
+    &.is-hovered
       background: #dc5708
       color: #fff
 
-  &_outline
+  &_variant_outline
     transition: background-color .3s, color .3s
     background: transparent
     border: 1px solid #F8762A
     color: #F8762A
     border-radius: 10px
 
-    &:hover:not(&_disabled)
+    &.is-hovered
       background: #F8762A
       color: #ffffff
-
-  &_disabled
-    color: #969696

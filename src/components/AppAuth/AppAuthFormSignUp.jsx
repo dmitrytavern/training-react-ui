@@ -7,7 +7,7 @@ import AppForm from "../AppForm"
 import AppInput from "../AppInput"
 import AppCheckbox from "../AppCheckbox"
 import AppInputPasswordIcon from "../AppInputPasswordIcon"
-import AppButtonArrow from "../AppButtonArrow"
+import AppButtonArrow from "../AppButton/AppButtonArrow"
 
 const AppAuthFormSignUp = () => {
 	const [submitBlock, setSubmitBlock] = useState(false)
@@ -122,11 +122,11 @@ const AppAuthFormSignUp = () => {
 				<div style={{height: 15}} />
 
 				<div style={{display: 'flex', justifyContent: 'space-between'}}>
-					<AppButtonArrow position="left" type="link" href="/" theme="link">
+					<AppButtonArrow position="left" href="/">
 						Back
 					</AppButtonArrow>
 
-					<AppButtonArrow position="right" type="submit" theme="link" disabled={submitBlock}>
+					<AppButtonArrow position="right" type="submit" disabled={submitBlock}>
 						Continue
 					</AppButtonArrow>
 				</div>

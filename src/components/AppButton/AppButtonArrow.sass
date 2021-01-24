@@ -1,0 +1,39 @@
+.app-button-arrow
+  &__inner
+    position: relative
+    transition: padding .3s ease
+    display: inline-flex
+    align-items: center
+
+  &__arrow
+    transition: opacity .35s ease, right .35s ease, left .35s ease
+    position: absolute
+    top: calc(50% - 7px)
+    width: 8px
+    height: 14px
+    opacity: 0
+
+    &_right
+      right: -30px
+
+    &_left
+      left: -30px
+
+  &.is-hovered .app-button-arrow__inner
+    transition: padding .25s ease
+
+  &.is-hovered .app-button-arrow
+    &__arrow
+      opacity: 1
+
+      &_right
+        right: 0
+
+      &_left
+        left: 0
+
+  &_right.is-hovered .app-button-arrow__inner
+    padding-right: 23px
+
+  &_left.is-hovered .app-button-arrow__inner
+    padding-left: 23px

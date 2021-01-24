@@ -3,8 +3,8 @@ import useAuthContext from "./auth.context"
 
 import { ReactComponent as AppGraphicEmailVerification } from '../../assets/img/graphics/email-verification.svg'
 
-import AppButton from "../AppButton"
-import AppButtonArrow from "../AppButtonArrow"
+import AppButton from "../AppButton/AppButton"
+import AppButtonArrow from "../AppButton/AppButtonArrow"
 
 const AppAuthEmail = () => {
 	const { data, backToRegister, onEmailVerification } = useAuthContext()
@@ -16,14 +16,7 @@ const AppAuthEmail = () => {
 	return (
 		<div>
 
-			<AppButtonArrow
-				type="button"
-				theme="link"
-				position="left"
-				buttonProps={{
-					onClick: () => backToRegister()
-				}}
-			>
+			<AppButtonArrow position="left" onClick={() => backToRegister()}>
 				Back
 			</AppButtonArrow>
 
@@ -38,23 +31,11 @@ const AppAuthEmail = () => {
 
 
 			<div>
-				<AppButton
-					type="button"
-					theme="filled"
-					buttonProps={{
-						onClick: () => backToRegister()
-					}}
-				>
+				<AppButton variant="filled" onClick={() => backToRegister()}>
 					Change email
 				</AppButton>
 
-				<AppButton
-					type="button"
-					theme="outline"
-					buttonProps={{
-						onClick: () => onEmailVerification()
-					}}
-				>
+				<AppButton variant="outline" onClick={() => onEmailVerification()}>
 					Resend email
 				</AppButton>
 			</div>
