@@ -3,11 +3,11 @@ import useForm from "../../hooks/form.hook"
 import useFormValidator from "../../hooks/formValidator.hook"
 import useAuthContext from "./auth.context"
 
-import AppForm from "../AppForm"
-import AppInput from "../AppInput"
-import AppCheckbox from "../AppCheckbox"
-import AppInputPasswordIcon from "../AppInputPasswordIcon"
-import AppButtonArrow from "../AppButton/AppButtonArrow"
+import AppForm from "../../components/AppForm/AppForm"
+import AppInput from "../../components/AppInput/AppInput"
+import AppCheckbox from "../../components/AppCheckbox/AppCheckbox"
+import AppInputPasswordIcon from "../../components/AppInput/AppInputPasswordIcon"
+import AppButtonArrow from "../../components/AppButton/AppButtonArrow"
 
 const AppAuthFormSignUp = () => {
 	const [submitBlock, setSubmitBlock] = useState(false)

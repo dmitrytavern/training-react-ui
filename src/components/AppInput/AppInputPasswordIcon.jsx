@@ -1,7 +1,7 @@
 import './AppInputPasswordIcon.sass'
 import PropTypes from 'prop-types'
-import { ReactComponent as AppIconEyeOn } from "../assets/img/icons/eye-on.svg"
-import { ReactComponent as AppIconEyeOff } from "../assets/img/icons/eye-off.svg"
+import { ReactComponent as AppIconEyeOn } from "../../assets/img/icons/eye-on.svg"
+import { ReactComponent as AppIconEyeOff } from "../../assets/img/icons/eye-off.svg"
 
 const AppInputPasswordIcon = ({ showPassword, setShowPassword }) => {
 	return (

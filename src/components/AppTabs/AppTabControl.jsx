@@ -5,7 +5,7 @@ const AppTabControl = (props) => {
 	const { index, value, onChange } = props
 
 	let tabName = 'app-tab-control'
-	if (value === index) tabName += ' app-tab-control_active'
+	if (value === index) tabName += ' is-active'
 
 	return (
 		<button

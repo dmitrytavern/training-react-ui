@@ -1,4 +1,4 @@
-import AppAuth from "./pages/AppAuth"
+import AppAuth from "./pages/AppAuth/AppAuth"
 
 function App() {
 	return (

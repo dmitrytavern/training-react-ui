@@ -2,8 +2,8 @@ import './AppAlert.sass'
 import { useRef } from "react"
 import PropTypes from 'prop-types'
 import { CSSTransition } from "react-transition-group"
-import { ReactComponent as AppIconAlertDanger } from '../assets/img/icons/alert-danger.svg'
-import { ReactComponent as AppIconClose } from '../assets/img/icons/close.svg'
+import { ReactComponent as AppIconAlertDanger } from '../../assets/img/icons/alert-danger.svg'
+import { ReactComponent as AppIconClose } from '../../assets/img/icons/close.svg'
 
 
 const AppAlert = (props) => {

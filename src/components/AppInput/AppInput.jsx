@@ -19,9 +19,9 @@ const AppInput = (props) => {
 
 	let inputClassName = 'app-input'
 	if (label) inputClassName += ' app-input_shift'
-	if (error) inputClassName += ' app-input_error'
-	if (focus) inputClassName += ' app-input_focus'
-	if (focus || value.length !== 0) inputClassName += ' app-input_active'
+	if (error) inputClassName += ' is-error'
+	if (focus) inputClassName += ' is-focused'
+	if (focus || value.length !== 0) inputClassName += ' is-active'
 
 	return (
 		<div className={inputClassName}>

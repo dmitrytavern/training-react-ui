@@ -49,7 +49,7 @@
         padding-top: 30px
         padding-bottom: 10px
 
-  &_error
+  &.is-error
     .app-input
       &__inner
         border-color: #C31A1A
@@ -57,7 +57,7 @@
       &__error
         display: block
 
-  &_focus
+  &.is-focused
     .app-input
       &__inner
         border-color: #adadad
@@ -65,7 +65,7 @@
       &__input::placeholder
         opacity: 0
 
-  &_active
+  &.is-active
     .app-input
       &__label
         transform: translateY(8px) scale(.75)

@@ -1,13 +1,13 @@
-import '../components/AppAuth/AppAuth.sass'
+import './AppAuth.sass'
 import { useState } from 'react'
-import { AuthContext } from "../components/AppAuth/auth.context"
+import { AuthContext } from "./auth.context"
 
-import AppTabPanel from "../components/AppTabPanel"
-import AppAlert from "../components/AppAlert"
-import AppLoader from "../components/AppLoader"
+import AppTabPanel from "../../components/AppTabs/AppTabPanel"
+import AppAlert from "../../components/AppAlert/AppAlert"
+import AppLoader from "../../components/AppLoader/AppLoader"
 
-import AppAuthForm from "../components/AppAuth/AppAuthForm"
-import AppAuthEmail from "../components/AppAuth/AppAuthEmail"
+import AppAuthForm from "./AppAuthForm"
+import AppAuthEmail from "./AppAuthEmail"
 
 
 const AppAuth = () => {

@@ -1,8 +1,8 @@
 import { useState } from 'react'
 
-import AppTabs from "../AppTabs"
-import AppTabControl from "../AppTabControl"
-import AppTabPanel from "../AppTabPanel"
+import AppTabs from "../../components/AppTabs/AppTabs"
+import AppTabControl from "../../components/AppTabs/AppTabControl"
+import AppTabPanel from "../../components/AppTabs/AppTabPanel"
 import AppAuthFormSignUp from "./AppAuthFormSignUp"
 import AppAuthFormSignIn from "./AppAuthFormSignIn"
 

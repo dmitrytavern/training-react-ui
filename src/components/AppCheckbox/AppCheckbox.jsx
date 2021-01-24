@@ -1,12 +1,9 @@
 import './AppCheckbox.sass'
-import { useState } from 'react'
 import PropTypes from 'prop-types'
-import { ReactComponent as AppIconCheck } from '../assets/img/icons/check.svg'
+import { ReactComponent as AppIconCheck } from '../../assets/img/icons/check.svg'
 
 const AppCheckbox = (props) => {
 	const { id, value, error, onChange, onClick } = props
-	const [focus, setFocus] = useState(false)
-
 
 	const handlerKeyDown = (e) => {
 		if (e.key === 'Enter') {
@@ -14,18 +11,9 @@ const AppCheckbox = (props) => {
 		}
 	}
 
-	const handlerFocus = () => {
-		setFocus(true)
-	}
-
-	const handlerBlur = () => {
-		setFocus(false)
-	}
-
 	let checkboxClassName = 'app-checkbox'
-	if (focus) checkboxClassName += ' app-checkbox_focus'
-	if (error) checkboxClassName += ' app-checkbox_error'
-	if (value) checkboxClassName += ' app-checkbox_checked'
+	if (error) checkboxClassName += ' is-error'
+	if (value) checkboxClassName += ' is-checked'
 
 	return (
 		<div className={checkboxClassName}>
@@ -43,8 +31,6 @@ const AppCheckbox = (props) => {
 			<label
 				htmlFor={id}
 				className="app-checkbox__label"
-				onFocus={handlerFocus}
-				onBlur={handlerBlur}
 				onKeyDown={handlerKeyDown}
 				tabIndex={0}
 			>
