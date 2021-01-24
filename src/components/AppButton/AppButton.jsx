@@ -55,10 +55,18 @@ const AppButton = (props) => {
 }
 
 export const propTypes = {
-	type: PropTypes.string,
+	type: PropTypes.oneOf([
+		'button',
+		'submit',
+		'reset'
+	]),
 	className: PropTypes.string,
 	disabled: PropTypes.bool,
-	variant: PropTypes.string,
+	variant: PropTypes.oneOf([
+		'link',
+		'filled',
+		'outline',
+	]),
 	href: PropTypes.string,
 
 	onClick: PropTypes.func,
