@@ -51,9 +51,7 @@ const AppAuthFormSignUp = () => {
 					errorMessage={formErrors.first_name}
 					onChange={setTextValue('first_name')}
 					onFocus={() => clearError('first_name')}
-					inputProps={{
-						autoComplete: 'given-name'
-					}}
+					autoComplete="given-name"
 				/>
 
 				<div style={{height: 30}} />
@@ -66,9 +64,7 @@ const AppAuthFormSignUp = () => {
 					errorMessage={formErrors.last_name}
 					onChange={setTextValue('last_name')}
 					onFocus={() => clearError('last_name')}
-					inputProps={{
-						autoComplete: 'family-name'
-					}}
+					autoComplete="family-name"
 				/>
 
 				<div style={{height: 30}} />
@@ -82,9 +78,7 @@ const AppAuthFormSignUp = () => {
 					errorMessage={formErrors.email}
 					onChange={setTextValue('email')}
 					onFocus={() => clearError('email')}
-					inputProps={{
-						autoComplete: 'email'
-					}}
+					autoComplete="email"
 				/>
 
 				<div style={{height: 30}} />
@@ -98,9 +92,7 @@ const AppAuthFormSignUp = () => {
 					errorMessage={formErrors.password}
 					onChange={setTextValue('password')}
 					onFocus={() => clearError('password')}
-					inputProps={{
-						autoComplete: 'new-password'
-					}}
+					autoComplete="new-password"
 					endAdornment={
 						<AppInputPasswordIcon showPassword={showPassword} setShowPassword={setShowPassword}/>
 					}

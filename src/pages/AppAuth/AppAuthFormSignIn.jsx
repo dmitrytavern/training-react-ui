@@ -41,9 +41,7 @@ const AppAuthFormSignUp = () => {
 					errorMessage={formErrors.email}
 					onChange={setFormValue('email')}
 					onFocus={() => clearError('email')}
-					inputProps={{
-						autoComplete: 'email'
-					}}
+					autoComplete="email"
 				/>
 
 				<div style={{height: 30}} />
@@ -57,9 +55,7 @@ const AppAuthFormSignUp = () => {
 					errorMessage={formErrors.password}
 					onChange={setFormValue('password')}
 					onFocus={() => clearError('password')}
-					inputProps={{
-						autoComplete: 'current-password'
-					}}
+					autoComplete="current-password"
 
 					endAdornment={
 						<AppInputPasswordIcon showPassword={showPassword} setShowPassword={setShowPassword}/>

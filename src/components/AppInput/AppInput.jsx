@@ -4,17 +4,30 @@ import PropTypes from 'prop-types'
 import { useState } from 'react'
 
 const AppInput = (props) => {
-	const { id, label, type, error, errorMessage, value, onChange, onFocus, onBlur, inputProps } = props
+	const {
+		id,
+		label,
+		type,
+		error,
+		errorMessage,
+		value,
+		onChange,
+		onFocus,
+		onBlur,
+		endAdornment,
+		startAdornment,
+		...other
+	} = props
 	const [focus, setFocus] = useState(false)
 
 	const handlerFocus = (event) => {
 		setFocus(true)
-		onFocus(event)
+		if (onFocus) onFocus(event)
 	}
 
 	const handlerBlur = (event) => {
 		setFocus(false)
-		onBlur(event)
+		if (onBlur) onBlur(event)
 	}
 
 
@@ -46,7 +59,7 @@ const AppInput = (props) => {
 		<div className={classes.root}>
 			<div className={innerClassName}>
 
-				{props.startAdornment}
+				{startAdornment}
 
 				<div className={classes.wrapper}>
 					{label && (
@@ -57,17 +70,18 @@ const AppInput = (props) => {
 						id={id}
 						className={inputClassName}
 						type={type}
-
 						value={value}
+
 						onFocus={handlerFocus}
 						onBlur={handlerBlur}
 						onChange={onChange}
-						{...inputProps}
-					/>
 
+						{...other}
+					/>
 				</div>
 
-				{props.endAdornment}
+				{endAdornment}
+
 			</div>
 
 			{errorMessage && (
@@ -79,9 +93,7 @@ const AppInput = (props) => {
 }
 
 AppInput.defaultProps = {
-	type: 'text',
-	onFocus: () => {},
-	onBlur: () => {}
+	type: 'text'
 }
 
 AppInput.propTypes = {
@@ -94,7 +106,6 @@ AppInput.propTypes = {
 	type: PropTypes.string,
 	error: PropTypes.bool,
 	errorMessage: PropTypes.string,
-	inputProps: PropTypes.object,
 
 	startAdornment: PropTypes.element,
 	endAdornment: PropTypes.element
