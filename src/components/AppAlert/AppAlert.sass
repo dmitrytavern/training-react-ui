@@ -23,6 +23,25 @@
   width: 100%
   z-index: 15
 
+  // Variants
+
+  &_variant_default
+    background: #f0f0f0
+    color: #000000
+
+    svg
+      fill: #000000
+
+  &_variant_danger
+    background: #d42525
+    color: #ffffff
+
+    svg
+      fill: #ffffff
+
+
+  // Elements
+
   &__inner
     padding: 12px 26px
     display: flex
@@ -48,18 +67,3 @@
     svg
       width: 18px
       height: 18px
-
-
-  &_default
-    background: #f0f0f0
-    color: #000000
-
-    svg
-      fill: #000000
-
-  &_danger
-    background: #d42525
-    color: #ffffff
-
-    svg
-      fill: #ffffff

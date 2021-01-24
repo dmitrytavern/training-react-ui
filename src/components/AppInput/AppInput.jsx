@@ -1,4 +1,6 @@
 import './AppInput.sass'
+import clsx from "clsx"
+import classes from "./classes"
 import PropTypes from 'prop-types'
 import { useState } from 'react'
 
@@ -17,26 +19,44 @@ const AppInput = (props) => {
 	}
 
 
-	let inputClassName = 'app-input'
-	if (label) inputClassName += ' app-input_shift'
-	if (error) inputClassName += ' is-error'
-	if (focus) inputClassName += ' is-focused'
-	if (focus || value.length !== 0) inputClassName += ' is-active'
+	// Class naming
+
+	const innerClassName = clsx({
+		[classes.inner]: true,
+		[classes.innerError]: error,
+		[classes.innerFocus]: focus
+	})
+
+	const inputClassName = clsx({
+		[classes.input]: true,
+		[classes.inputShift]: label,
+		[classes.inputFocus]: focus,
+	})
+
+	const labelClassName = clsx({
+		[classes.label]: true,
+		[classes.labelActive]: focus || value.length !== 0
+	})
+
+	const errorClassName = clsx({
+		[classes.error]: true,
+		[classes.errorActive]: error
+	})
 
 	return (
-		<div className={inputClassName}>
-			<div className="app-input__inner">
+		<div className={classes.root}>
+			<div className={innerClassName}>
 
 				{props.startAdornment}
 
-				<div className="app-input__input-wrapper">
+				<div className={classes.wrapper}>
 					{label && (
-						<label htmlFor={id} className="app-input__label">{label}</label>
+						<label htmlFor={id} className={labelClassName}>{label}</label>
 					)}
 
 					<input
 						id={id}
-						className="app-input__input"
+						className={inputClassName}
 						type={type}
 
 						value={value}
@@ -52,7 +72,7 @@ const AppInput = (props) => {
 			</div>
 
 			{errorMessage && (
-				<span className="app-input__error">{errorMessage}</span>
+				<span className={errorClassName}>{errorMessage}</span>
 			)}
 
 		</div>

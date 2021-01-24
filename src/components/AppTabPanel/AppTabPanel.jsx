@@ -1,4 +1,5 @@
 import './AppTabPanel.sass'
+import classes from "./classes"
 import PropTypes from 'prop-types'
 import { useRef, useEffect, useState } from 'react'
 import { CSSTransition } from "react-transition-group"
@@ -59,7 +60,7 @@ const AppTabPanel = (props) => {
 	/* If transition is none, we return component without transition component */
 	if (transition === 0 && transitionName === '') {
 		return (
-			<div className="app-tab">
+			<div className={classes.root}>
 				{ activeTab === index && props.children}
 			</div>
 		)
@@ -82,7 +83,7 @@ const AppTabPanel = (props) => {
 			}}
 			timeout={transition}
 		>
-			<div className="app-tab-panel" ref={nodeRef}>
+			<div className={classes.root} ref={nodeRef}>
 				{ activeTab === index && props.children}
 			</div>
 		</CSSTransition>

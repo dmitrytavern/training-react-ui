@@ -1,4 +1,6 @@
 import './AppCheckbox.sass'
+import clsx from 'clsx'
+import classes from './classes'
 import PropTypes from 'prop-types'
 import { ReactComponent as AppIconCheck } from '../../assets/img/icons/check.svg'
 
@@ -11,12 +13,21 @@ const AppCheckbox = (props) => {
 		}
 	}
 
-	let checkboxClassName = 'app-checkbox'
-	if (error) checkboxClassName += ' is-error'
-	if (value) checkboxClassName += ' is-checked'
+
+	/* Class naming */
+
+	const boxClassName = clsx({
+		[classes.box]: true,
+		[classes.boxError]: error
+	})
+
+	const iconClassName = clsx({
+		[classes.icon]: true,
+		[classes.iconChecked]: value
+	})
 
 	return (
-		<div className={checkboxClassName}>
+		<div className={classes.root}>
 			<input
 				id={id}
 				type="checkbox"
@@ -30,12 +41,12 @@ const AppCheckbox = (props) => {
 
 			<label
 				htmlFor={id}
-				className="app-checkbox__label"
+				className={classes.label}
 				onKeyDown={handlerKeyDown}
 				tabIndex={0}
 			>
-				<span className="app-checkbox__box">
-					<span className="app-checkbox__box-icon">
+				<span className={boxClassName}>
+					<span className={iconClassName}>
 						<AppIconCheck />
 					</span>
 				</span>

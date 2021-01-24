@@ -2,9 +2,9 @@ import './AppAuth.sass'
 import { useState } from 'react'
 import { AuthContext } from "./auth.context"
 
-import AppTabPanel from "../../components/AppTabs/AppTabPanel"
-import AppAlert from "../../components/AppAlert/AppAlert"
-import AppLoader from "../../components/AppLoader/AppLoader"
+import AppTabPanel from "../../components/AppTabPanel"
+import AppAlert from "../../components/AppAlert"
+import AppLoader from "../../components/AppLoader"
 
 import AppAuthForm from "./AppAuthForm"
 import AppAuthEmail from "./AppAuthEmail"
@@ -63,7 +63,7 @@ const AppAuth = () => {
 		<AuthContext.Provider value={authContextValue}>
 			{/* Error alert */}
 			<AppAlert
-				type="danger"
+				variant="danger"
 				show={error}
 				content={errorText}
 				onClose={() => setError(false)}
@@ -72,7 +72,7 @@ const AppAuth = () => {
 
 			{/* Form */}
 			<div style={{ maxWidth: "440px", padding: '30px', position: 'relative'}}>
-				<AppLoader loading={loading} />
+				<AppLoader show={loading} />
 
 
 				<AppTabPanel value={step} index={0} {...transition}>

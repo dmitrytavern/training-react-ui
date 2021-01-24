@@ -1,16 +1,23 @@
 import './AppTabControl.sass'
+import clsx from "clsx"
+import classes from "./classes"
 import PropTypes from 'prop-types'
 
 const AppTabControl = (props) => {
 	const { index, value, onChange } = props
 
-	let tabName = 'app-tab-control'
-	if (value === index) tabName += ' is-active'
+
+	// Class naming
+
+	const rootClassName = clsx({
+		[classes.root]: true,
+		[classes.rootActive]: value === index
+	})
 
 	return (
 		<button
 			type="button"
-			className={tabName}
+			className={rootClassName}
 			onClick={() => onChange(index)}
 		>
 			{props.children}

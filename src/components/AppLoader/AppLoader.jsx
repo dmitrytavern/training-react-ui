@@ -1,22 +1,23 @@
 import './AppLoader.sass'
+import classes from "./classes"
 import { useRef } from 'react'
 import PropTypes from 'prop-types'
 import { CSSTransition } from "react-transition-group"
 
 const AppLoader = (props) => {
 	const ref = useRef()
-	const { loading } = props
+	const { show } = props
 
 	return (
 		<CSSTransition
-			in={loading}
+			in={show}
 			nodeRef={ref}
-			classNames="app-loader"
+			classNames={classes.transitionName}
 			timeout={300}
 			unmountOnExit
 		>
-			<div className="app-loader-wrapper" ref={ref}>
-				<div className="app-loader">
+			<div className={classes.root} ref={ref}>
+				<div className={classes.loader}>
 					Loading...
 				</div>
 			</div>
@@ -25,7 +26,7 @@ const AppLoader = (props) => {
 }
 
 AppLoader.propTypes = {
-	loading: PropTypes.bool.isRequired
+	show: PropTypes.bool.isRequired
 }
 
 export default AppLoader

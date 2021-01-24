@@ -1,4 +1,6 @@
 import './AppButton.sass'
+import clsx from "clsx"
+import classes from "./classes"
 import { useState } from 'react'
 import PropTypes from "prop-types"
 
@@ -28,20 +30,23 @@ const AppButton = (props) => {
 		componentProps['type'] = type
 	}
 
-
-	// Classes
-
-	let buttonClassName = `app-button app-button_variant_${variant}`
-	if (className) buttonClassName += ' ' + className
-	if (hovered && !disabled) buttonClassName += ' is-hovered'
 	if (disabled) {
-		buttonClassName += ' is-disabled'
 		componentProps['disabled'] = 'disabled'
 	}
 
+
+	// Classes
+	const rootClassName = clsx({
+		[classes.root]: true,
+		[classes.rootVariant + variant]: true,
+		[className]: true,
+		[classes.rootHovered]: hovered && !disabled,
+		[classes.rootDisabled]: disabled
+	})
+
 	return (
 		<ComponentName
-			className={buttonClassName}
+			className={rootClassName}
 			onMouseEnter={handlerMouseEnter}
 			onMouseLeave={handlerMouseLeave}
 

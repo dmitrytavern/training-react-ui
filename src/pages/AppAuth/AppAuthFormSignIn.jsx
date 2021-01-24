@@ -3,10 +3,10 @@ import useForm from "../../hooks/form.hook"
 import useFormValidator from "../../hooks/formValidator.hook"
 import useAuthContext from "./auth.context"
 
-import AppForm from "../../components/AppForm/AppForm"
-import AppInput from "../../components/AppInput/AppInput"
-import AppInputPasswordIcon from "../../components/AppInput/AppInputPasswordIcon";
-import AppButtonArrow from "../../components/AppButton/AppButtonArrow";
+import AppForm from "../../components/AppForm"
+import AppInput from "../../components/AppInput"
+import AppInputPasswordIcon from "../../components/AppInput/AppInputPasswordIcon"
+import AppButtonArrow from "../../components/AppButtonArrow"
 
 const AppAuthFormSignUp = () => {
 	const [showPassword, setShowPassword] = useState(false)

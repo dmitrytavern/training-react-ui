@@ -11,6 +11,12 @@
     border-radius: 10px
     box-shadow: 0 0 30px rgba(#000, .1)
 
+    &_focused
+      border-color: #adadad
+
+    &_error
+      border-color: #C31A1A
+
   &__label
     transition: transform .2s ease, color .2s ease
     transform: translateY(20px) scale(1)
@@ -20,6 +26,10 @@
     font-size: 15px
     line-height: 20px
     cursor: auto
+
+    &_active
+      transform: translateY(8px) scale(.75)
+      color: #bebebe
 
   &__input-wrapper
     position: relative
@@ -36,6 +46,13 @@
     border: none
     padding: 20px 30px
 
+    &_focused::placeholder
+      opacity: 0
+
+    &_shift
+      padding-top: 30px
+      padding-bottom: 10px
+
   &__error
     display: none
     margin-top: 5px
@@ -43,31 +60,6 @@
     font-weight: 700
     color: #C31A1A
 
-  &_shift
-    .app-input
-      &__input
-        padding-top: 30px
-        padding-bottom: 10px
-
-  &.is-error
-    .app-input
-      &__inner
-        border-color: #C31A1A
-
-      &__error
-        display: block
-
-  &.is-focused
-    .app-input
-      &__inner
-        border-color: #adadad
-
-      &__input::placeholder
-        opacity: 0
-
-  &.is-active
-    .app-input
-      &__label
-        transform: translateY(8px) scale(.75)
-        color: #bebebe
+    &_active
+      display: block
 

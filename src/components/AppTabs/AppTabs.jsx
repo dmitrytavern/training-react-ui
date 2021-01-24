@@ -1,4 +1,5 @@
 import React from 'react'
+import classes from "./classes"
 import PropTypes from 'prop-types'
 
 const AppTabs = (props) => {
@@ -16,7 +17,7 @@ const AppTabs = (props) => {
 	})
 
 	return (
-		<div className="app-tabs">
+		<div className={classes.root}>
 			{children}
 		</div>
 	)

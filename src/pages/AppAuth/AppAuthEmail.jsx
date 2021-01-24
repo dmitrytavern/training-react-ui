@@ -3,8 +3,8 @@ import useAuthContext from "./auth.context"
 
 import { ReactComponent as AppGraphicEmailVerification } from '../../assets/img/graphics/email-verification.svg'
 
-import AppButton from "../../components/AppButton/AppButton"
-import AppButtonArrow from "../../components/AppButton/AppButtonArrow"
+import AppButton from "../../components/AppButton"
+import AppButtonArrow from "../../components/AppButtonArrow"
 
 const AppAuthEmail = () => {
 	const { data, backToRegister, onEmailVerification } = useAuthContext()

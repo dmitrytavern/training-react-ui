@@ -1,22 +1,31 @@
 import './AppButtonArrow.sass'
+import clsx from "clsx"
+import classes from "./classes"
 import PropTypes from 'prop-types'
 import { ReactComponent as AppIconArrowRight } from '../../assets/img/icons/arrow-right.svg'
 import { ReactComponent as AppIconArrowLeft } from '../../assets/img/icons/arrow-left.svg'
 
-import AppButton, { propTypes } from "./AppButton"
+import AppButton, { propTypes } from "../AppButton/AppButton"
 
 const AppButtonArrow = (props) => {
 	const { className, position, disabled, children, ...other} = props
 
-	let buttonClassName = 'app-button-arrow app-button-arrow_' + position
-	if (className) buttonClassName += ' ' + className
+	// Class naming
+	const rootClassName = clsx([
+		[classes.root],
+		[classes.rootDirection + position],
+		[className]
+	])
+
+	const arrowLeft = clsx([classes.arrow], [classes.arrowLeft])
+	const arrowRight = clsx([classes.arrow], [classes.arrowRight])
 
 	return (
-		<AppButton className={buttonClassName} disabled={disabled} {...other}>
-			<div className="app-button-arrow__inner">
+		<AppButton className={rootClassName} disabled={disabled} {...other}>
+			<div className={classes.inner}>
 
 				{position === 'left' && (
-					<span className="app-button-arrow__arrow app-button-arrow__arrow_left">
+					<span className={arrowLeft}>
 						<AppIconArrowLeft />
 					</span>
 				)}
@@ -24,7 +33,7 @@ const AppButtonArrow = (props) => {
 				{children}
 
 				{position === 'right' && (
-					<span className="app-button-arrow__arrow app-button-arrow__arrow_right">
+					<span className={arrowRight}>
 						<AppIconArrowRight />
 					</span>
 				)}

@@ -13,7 +13,7 @@
   transition: opacity .3s ease
 
 
-.app-loader-wrapper
+.app-loader
   position: absolute
   top: 0
   left: 0
@@ -27,17 +27,17 @@
 
   background: rgba(#fff, .5)
 
-.app-loader
-  color: #000
-  font-size: 6px
-  margin: 100px auto
-  width: 1em
-  height: 1em
-  border-radius: 50%
-  position: relative
-  text-indent: -9999em
-  animation: app-loader 1.3s infinite linear
-  transform: translateZ(0)
+  &__spinner
+    color: #000
+    font-size: 6px
+    margin: 100px auto
+    width: 1em
+    height: 1em
+    border-radius: 50%
+    position: relative
+    text-indent: -9999em
+    animation: app-loader 1.3s infinite linear
+    transform: translateZ(0)
 
 @keyframes app-loader
   0%,
