@@ -1,34 +1,21 @@
 import '../components/AppAuth/AppAuth.sass'
-import { useState, useRef } from 'react'
-import { CSSTransition } from "react-transition-group";
+import { useState } from 'react'
 import { AuthContext } from "../components/AppAuth/auth.context"
+
+import AppTabPanel from "../components/AppTabPanel"
+import AppAlert from "../components/AppAlert"
+import AppLoader from "../components/AppLoader"
 
 import AppAuthForm from "../components/AppAuth/AppAuthForm"
 import AppAuthEmail from "../components/AppAuth/AppAuthEmail"
 
-import AppAlert from "../components/AppAlert"
-import AppLoader from "../components/AppLoader"
-
 
 const AppAuth = () => {
-	const refFormStep = useRef(null)
-	const refEmailStep = useRef(null)
-
 	const [data, setData] = useState({})
-	const [step, setStep] = useState('form')
-	const [stepChanging, setStepChanging] = useState(false)
+	const [step, setStep] = useState(0)
 	const [error, setError] = useState(false)
 	const [errorText, setErrorText] = useState('')
 	const [loading, setLoading] = useState(false)
-
-	const changeStep = (newVal) => {
-		setStepChanging(true)
-
-		setTimeout(function () {
-			setStep(newVal)
-			setStepChanging(false)
-		}, 300)
-	}
 
 	const onLogin = () => {
 		setLoading(true)
@@ -44,7 +31,7 @@ const AppAuth = () => {
 		setLoading(true)
 
 		setTimeout(() => {
-			changeStep('email')
+			setStep(1)
 			setLoading(false)
 			setData(props)
 		}, 1000)
@@ -55,7 +42,7 @@ const AppAuth = () => {
 	}
 
 	const backToRegister = () => {
-		changeStep('form')
+		setStep(0)
 	}
 
 
@@ -65,6 +52,11 @@ const AppAuth = () => {
 		backToRegister,
 		onEmailVerification,
 		data
+	}
+
+	const transition = {
+		transition: 300,
+		transitionName: 'app-auth-step',
 	}
 
 	return (
@@ -83,17 +75,14 @@ const AppAuth = () => {
 				<AppLoader loading={loading} />
 
 
-				<CSSTransition in={stepChanging} nodeRef={refFormStep} classNames="app-auth-step" timeout={300}>
-					<div ref={refFormStep}>
-						{step === 'form' && <AppAuthForm/>}
-					</div>
-				</CSSTransition>
+				<AppTabPanel value={step} index={0} {...transition}>
+					<AppAuthForm />
+				</AppTabPanel>
 
-				<CSSTransition in={stepChanging} nodeRef={refEmailStep} classNames="app-auth-step" timeout={300}>
-					<div ref={refEmailStep}>
-						{step === 'email' && <AppAuthEmail/>}
-					</div>
-				</CSSTransition>
+				<AppTabPanel value={step} index={1} {...transition}>
+					<AppAuthEmail />
+				</AppTabPanel>
+
 			</div>
 		</AuthContext.Provider>
 	)
