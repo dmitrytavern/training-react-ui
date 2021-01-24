@@ -1,4 +1,3 @@
-import './AppTabPanel.sass'
 import classes from "./classes"
 import PropTypes from 'prop-types'
 import { useRef, useEffect, useState } from 'react'

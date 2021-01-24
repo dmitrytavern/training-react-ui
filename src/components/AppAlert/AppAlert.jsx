@@ -1,4 +1,3 @@
-import './AppAlert.sass'
 import clsx from "clsx"
 import classes from "./classes"
 import { useRef } from "react"

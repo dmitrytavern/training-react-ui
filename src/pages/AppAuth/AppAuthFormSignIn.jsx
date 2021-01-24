@@ -5,7 +5,7 @@ import useAuthContext from "./auth.context"
 
 import AppForm from "../../components/AppForm"
 import AppInput from "../../components/AppInput"
-import AppInputPasswordIcon from "../../components/AppInput/AppInputPasswordIcon"
+import AppInputPasswordIcon from "../../components/AppInputPasswordIcon"
 import AppButtonArrow from "../../components/AppButtonArrow"
 
 const AppAuthFormSignUp = () => {

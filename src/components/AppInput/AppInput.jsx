@@ -1,4 +1,3 @@
-import './AppInput.sass'
 import clsx from "clsx"
 import classes from "./classes"
 import PropTypes from 'prop-types'

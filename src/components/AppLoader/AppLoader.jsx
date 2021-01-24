@@ -1,4 +1,3 @@
-import './AppLoader.sass'
 import classes from "./classes"
 import { useRef } from 'react'
 import PropTypes from 'prop-types'

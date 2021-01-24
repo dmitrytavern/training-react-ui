@@ -1,4 +1,3 @@
-import './AppButton.sass'
 import clsx from "clsx"
 import classes from "./classes"
 import { useState } from 'react'

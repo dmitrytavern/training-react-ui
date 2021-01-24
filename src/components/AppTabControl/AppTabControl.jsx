@@ -1,7 +1,8 @@
-import './AppTabControl.sass'
 import clsx from "clsx"
 import classes from "./classes"
 import PropTypes from 'prop-types'
+
+import AppButton from "../AppButton"
 
 const AppTabControl = (props) => {
 	const { index, value, onChange } = props
@@ -15,13 +16,12 @@ const AppTabControl = (props) => {
 	})
 
 	return (
-		<button
-			type="button"
+		<AppButton
 			className={rootClassName}
 			onClick={() => onChange(index)}
 		>
 			{props.children}
-		</button>
+		</AppButton>
 	)
 }
 
