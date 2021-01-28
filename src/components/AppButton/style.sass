@@ -1,18 +1,20 @@
 .app-button
-  font-family: inherit
-  font-weight: 700
-  font-size: 16px
   padding: 12px 33px
-  outline: none
-  cursor: pointer
-  color: #000
 
   // State
   &.is-hovered
     color: #000
 
   &.is-disabled
-    color: #969696
+    opacity: .6
+
+  &.is-active-spinner
+    .app-button
+      &__inner
+        padding-right: 30px
+
+      &__spinner
+
 
 
   // Variants
@@ -29,6 +31,9 @@
     border: none
     border-radius: 10px
 
+    .app-button__spinner
+      color: #fff
+
     &.is-hovered
       background: #dc5708
       color: #fff
@@ -40,6 +45,23 @@
     color: #F8762A
     border-radius: 10px
 
+    .app-button__spinner
+      color: #F8762A
+
     &.is-hovered
       background: #F8762A
       color: #ffffff
+
+
+  // Elements
+
+  &__inner
+    transition: padding-right .25s ease
+    position: relative
+
+  &__spinner
+    position: absolute
+    top: 50%
+    right: 0
+    transform: translateY(-50%)
+

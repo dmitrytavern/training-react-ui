@@ -3,9 +3,10 @@ import classes from "./classes"
 import PropTypes from "prop-types"
 
 import AppButtonBase, { propTypes as buttonBasePropTypes } from "../AppButtonBase"
+import AppSpinner from "../AppSpinner"
 
 const AppButton = (props) => {
-	const { className, variant, ...other} = props
+	const { className, variant, spinner, ...other} = props
 	let componentProps = {}
 
 
@@ -13,6 +14,7 @@ const AppButton = (props) => {
 	const rootClassName = clsx({
 		[classes.root]: true,
 		[classes.rootVariant + variant]: true,
+		[classes.rootActiveSpinner]: spinner,
 		[className]: !!className,
 	})
 
@@ -25,6 +27,8 @@ const AppButton = (props) => {
 		>
 			<div className={classes.inner}>
 				{props.children}
+
+				<AppSpinner className={classes.spinner} show={spinner}/>
 			</div>
 		</AppButtonBase>
 	)
@@ -36,12 +40,14 @@ AppButton.propTypes = {
 		'filled',
 		'outline',
 	]),
+	spinner: PropTypes.bool,
 
 	...buttonBasePropTypes
 }
 
 AppButton.defaultProps = {
-	variant: 'link'
+	variant: 'link',
+	spinner: false
 }
 
 export default AppButton

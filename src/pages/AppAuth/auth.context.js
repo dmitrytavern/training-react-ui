@@ -6,7 +6,9 @@ export const AuthContext = createContext({
 	onRegister: noop,
 	onEmailVerification: noop,
 	backToRegister: noop,
-	data: {}
+	data: {},
+
+	emailSending: false
 })
 
 export default function useAuthContext() {

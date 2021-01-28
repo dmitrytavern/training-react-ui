@@ -12,10 +12,11 @@ import AppAuthEmail from "./AppAuthEmail"
 
 const AppAuth = () => {
 	const [data, setData] = useState({})
-	const [step, setStep] = useState(0)
+	const [step, setStep] = useState(1)
 	const [error, setError] = useState(false)
 	const [errorText, setErrorText] = useState('')
 	const [loading, setLoading] = useState(false)
+	const [emailSending, setEmailSending] = useState(false)
 
 	const onLogin = () => {
 		setLoading(true)
@@ -38,7 +39,12 @@ const AppAuth = () => {
 	}
 
 	const onEmailVerification = () => {
+		setEmailSending(true)
 		console.log('Send message with verification code')
+
+		setTimeout(() => {
+			setEmailSending(false)
+		}, 400)
 	}
 
 	const backToRegister = () => {
@@ -51,7 +57,8 @@ const AppAuth = () => {
 		onRegister,
 		backToRegister,
 		onEmailVerification,
-		data
+		data,
+		emailSending
 	}
 
 	const transition = {
@@ -71,7 +78,7 @@ const AppAuth = () => {
 
 
 			{/* Form */}
-			<div style={{ maxWidth: "440px", padding: '30px', position: 'relative'}}>
+			<div style={{ maxWidth: "450px", padding: '30px', position: 'relative'}}>
 				<AppLoader show={loading} />
 
 
