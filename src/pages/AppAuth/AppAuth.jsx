@@ -12,7 +12,7 @@ import AppAuthEmail from "./AppAuthEmail"
 
 const AppAuth = () => {
 	const [data, setData] = useState({})
-	const [step, setStep] = useState(1)
+	const [step, setStep] = useState(0)
 	const [error, setError] = useState(false)
 	const [errorText, setErrorText] = useState('')
 	const [loading, setLoading] = useState(false)

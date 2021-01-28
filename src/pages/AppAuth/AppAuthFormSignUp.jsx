@@ -113,11 +113,7 @@ const AppAuthFormSignUp = () => {
 
 				<div style={{height: 15}} />
 
-				<div style={{display: 'flex', justifyContent: 'space-between'}}>
-					<AppButtonArrow position="left" href="/">
-						Back
-					</AppButtonArrow>
-
+				<div style={{display: 'flex', justifyContent: 'flex-end'}}>
 					<AppButtonArrow position="right" type="submit" disabled={submitBlock}>
 						Continue
 					</AppButtonArrow>
