@@ -1,9 +1,8 @@
 const buttonClasses = {
 	root: 'app-button',
-	rootHovered: 'is-hovered',
-	rootDisabled: 'is-disabled',
+	rootVariant: 'app-button_variant_',
 
-	rootVariant: 'app-button_variant_'
+	inner: 'app-button__inner'
 }
 
 export default buttonClasses

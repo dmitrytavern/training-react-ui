@@ -1,13 +1,14 @@
 import clsx from "clsx"
 import classes from "./classes"
 import PropTypes from 'prop-types'
+
 import { ReactComponent as AppIconArrowRight } from '../../assets/img/icons/arrow-right.svg'
 import { ReactComponent as AppIconArrowLeft } from '../../assets/img/icons/arrow-left.svg'
 
-import AppButton, { propTypes } from "../AppButton/AppButton"
+import AppButtonBase, { propTypes as buttonBasePropTypes } from "../AppButtonBase"
 
 const AppButtonArrow = (props) => {
-	const { className, position, disabled, children, ...other} = props
+	const { className, position, children, ...other} = props
 
 	// Class naming
 	const rootClassName = clsx([
@@ -20,7 +21,7 @@ const AppButtonArrow = (props) => {
 	const arrowRight = clsx([classes.arrow], [classes.arrowRight])
 
 	return (
-		<AppButton className={rootClassName} disabled={disabled} {...other}>
+		<AppButtonBase className={rootClassName} {...other}>
 			<div className={classes.inner}>
 
 				{position === 'left' && (
@@ -38,15 +39,14 @@ const AppButtonArrow = (props) => {
 				)}
 
 			</div>
-		</AppButton>
+		</AppButtonBase>
 	)
 }
 
 AppButtonArrow.propTypes = {
-	className: PropTypes.string,
 	position: PropTypes.oneOf(['left', 'right']),
 
-	...propTypes
+	...buttonBasePropTypes
 }
 
 AppButtonArrow.defaultProps = {
