@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import useAuthContext from "./auth.context"
+import useTimer from "../../hooks/timer.hook"
 
 import { ReactComponent as AppGraphicEmailVerification } from '../../assets/img/graphics/email-verification.svg'
 
@@ -7,13 +8,12 @@ import AppButton from "../../components/AppButton"
 import AppButtonArrow from "../../components/AppButtonArrow"
 
 const AppAuthEmail = () => {
+	const { setTimer, seconds, disabled } = useTimer()
 	const { data, backToRegister, onEmailVerification, emailSending } = useAuthContext()
-	const [disabledResendEmail, setDisabledResendEmail] = useState(false)
-	const [lastSeconds, setLastSeconds] = useState(0)
-	const [emailInterval, setEmailInterval] = useState()
+
 
 	const resendEmail = () => {
-		setDisabledResendEmail(true)
+		setTimer(60)
 		onEmailVerification()
 	}
 
@@ -21,28 +21,6 @@ const AppAuthEmail = () => {
 		onEmailVerification()
 		// eslint-disable-next-line
 	}, [])
-
-	useEffect(() => {
-		let timeout = null
-		if (!emailSending && disabledResendEmail) {
-			setLastSeconds(60)
-
-			timeout = setInterval(() => {
-				setLastSeconds((oldVal) => oldVal - 1)
-			}, 1000)
-
-			setEmailInterval(timeout)
-		}
-
-		return () => clearInterval(timeout)
-	}, [emailSending, disabledResendEmail])
-
-	useEffect(() => {
-		if (lastSeconds <= 0) {
-			clearInterval(emailInterval)
-			setDisabledResendEmail(false)
-		}
-	}, [lastSeconds, emailInterval])
 
 	return (
 		<div>
@@ -66,8 +44,8 @@ const AppAuthEmail = () => {
 					Change email
 				</AppButton>
 
-				<AppButton variant="outline" onClick={() => resendEmail()} spinner={emailSending && disabledResendEmail} disabled={disabledResendEmail}>
-					Resend email {lastSeconds ? lastSeconds : ''}
+				<AppButton variant="outline" onClick={() => resendEmail()} spinner={emailSending && disabled} disabled={disabled}>
+					Resend email {seconds ? seconds : ''}
 				</AppButton>
 			</div>
 
