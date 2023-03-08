@@ -1,14 +1,43 @@
 # Getting Started
 
-I P N
-0 0 1 - need: next
-1 0 1 - need: prev
+Implementation of custom UI components similar to Material UI.
 
-0 1 0 - need: prev
-1 1 0 - need: next
+## Components list
 
-if P < N || (I == N) - next
-if P > N || (I == N) - prev
+- AppAlert
+- AppButton
+- AppButtonArrow
+- AppButtonBase
+- AppCheckbox
+- AppForm
+- AppInput
+- AppInputPasswordIcon
+- AppLoader
+- AppSpinner
+- AppTabControl
+- AppTabPanel
+- AppTabs
 
+## How to install
 
-if (I == N) && (I < P)
+1. Clone repo
+
+```
+git clone https://github.com/dmitrytavern/training-react-ui.git
+```
+
+2. Install deps
+
+```
+npm install
+```
+
+3. Start
+
+```
+npm start
+```
+
+## Screenshots
+
+<img src=".github/screenshot.png">
